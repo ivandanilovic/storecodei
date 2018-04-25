@@ -6,6 +6,11 @@ class Model extends CI_Model
 
     private $data = array();
 
+    public function __construct(array $data = null) {
+        $this->load->database();
+        $this->data = $data;
+    }
+
     public function getAll()
     {
         return $this->data;
