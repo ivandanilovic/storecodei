@@ -20,7 +20,7 @@ class Model extends CI_Model
     {
         if (isset($this->data[$key]))
         {
-            return $this->data[$key];
+            return $this->data[$key]; // Postane: return $this->data["name"];
         }
         else
         {

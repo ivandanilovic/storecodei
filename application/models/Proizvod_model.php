@@ -7,7 +7,11 @@ class Proizvod_model extends Model
 
     public function fetchAll()
     {
-        $rezultati = $this->db->get('proizvodi'); // isto kao "SELECT * FROM proizvodi"
+        $rezultati = $this->db->get('proizvodi');   // isto kao "SELECT * FROM proizvodi"
+                                                    // ILI:
+                                                    // $this->db->select('*');
+                                                    // $this->db->from('proizvodi');
+                                                    // $this->db->get(); ~ mysqli_query()
         $proizvodi = array();
         foreach ($rezultati->result_array() as $rezultat) // result_array() == mysqli_fetch_assoc()
         {
@@ -18,9 +22,12 @@ class Proizvod_model extends Model
 
     public function fetch($id)
     {
-        $this->db->select('*');
-        $this->db->from('proizvodi');
-        $this->db->where('id = $id'); //??!!
+//          $this->db->select('*');
+//          $this->db->from('proizvodi');
+//          $this->db->where(array('id' => $id));
+//          $this->>db->get();
+        $rezultat = $this->db->get_where('proizvodi', array('id' => $id));
+        return new Proizvod_model($rezultat->result_array());
     }
 
 }

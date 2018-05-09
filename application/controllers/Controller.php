@@ -18,7 +18,7 @@ class Controller extends CI_Controller
     protected function loadView($view, $data)
     {
         $this->load->view('templates/header');
-        $this->load->view($view, $data);
+        $this->load->view($view, $data); // Kao: showContent($data)
         $this->load->view('templates/footer');
     }
 
