@@ -17,7 +17,9 @@ class Controller extends CI_Controller
 
     protected function loadView($view, $data)
     {
-        $this->load->view('templates/header');
+        $this->load->model('kategorija_model');
+        $data['kategorije'] = $this->kategorija_model->fetchAll();
+        $this->load->view('templates/header', $data);
         $this->load->view($view, $data); // Kao: showContent($data)
         $this->load->view('templates/footer');
     }

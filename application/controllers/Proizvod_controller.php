@@ -20,4 +20,11 @@ class Proizvod_controller extends Controller
         $this->loadView('proizvod', $data); // proizvod.php dobija $data i $data['podatak'] postaje $podatak
     }
 
+    public function loadByCategory($id)
+    {
+        $this->load->model('proizvod_model');
+        $data['podaci'] = $this->proizvod_model->fetchByCategory($id);
+        $this->loadView('proizvodi', $data);
+    }
+
 }

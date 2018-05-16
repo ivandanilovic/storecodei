@@ -27,7 +27,15 @@ class Proizvod_model extends Model
 //          $this->db->where(array('id' => $id));
 //          $this->>db->get();
         $rezultat = $this->db->get_where('proizvodi', array('id' => $id));
-        return new Proizvod_model($rezultat->result_array());
+        return new Proizvod_model($rezultat->result_array()[0]); // Moramo uzeti prvi (i jedini) rezultat iz niza rezultata.
+    }
+
+    public function fetchByCategory($id)
+    {
+        $rezultati = $this->db->get_where('proizvodi', ['kategorija' => $id]);
+        $proizvodi = array();
+        foreach ($rezultati->result_array() as $rezultat) array_push($proizvodi, new Proizvod_model($rezultat));
+        return $proizvodi;
     }
 
 }

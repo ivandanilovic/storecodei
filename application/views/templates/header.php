@@ -73,18 +73,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="left_content">
             <div class="title_box">Categories</div>
             <ul class="left_menu">
-                <li class="odd"><a href="#">Processors</a></li>
-                <li class="even"><a href="#">Motherboards</a></li>
-                <li class="odd"><a href="#">Desktops</a></li>
-                <li class="even"><a href="#">Laptops &amp; Notebooks</a></li>
-                <li class="odd"><a href="#">Processors</a></li>
-                <li class="even"><a href="#">Motherboards</a></li>
-                <li class="odd"><a href="#">Processors</a></li>
-                <li class="even"><a href="#">Motherboards</a></li>
-                <li class="odd"><a href="#">Desktops</a></li>
-                <li class="even"><a href="#">Laptops &amp; Notebooks</a></li>
-                <li class="odd"><a href="#">Processors</a></li>
-                <li class="even"><a href="#">Motherboards</a></li>
+                <?php
+                    foreach($kategorije as $index => $kategorija)
+                    {
+                        echo '
+                                <li class="' . ($index%2==0 ? 'even' : 'odd') . '">
+                                <a href=' . base_url('kategorija/' . $kategorija->get('id')) . '>' . $kategorija->get('naziv') . '</a>
+                                </li>';
+                    }
+                ?>
+
             </ul>
             <div class="title_box">Special Products</div>
             <div class="border_box">

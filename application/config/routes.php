@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'proizvod_controller';
 $route['proizvod/(:num)'] = 'proizvod_controller/loadproduct/$1'; // URL sadrzi numericku vrijednost; loadProduct() prima 1. takvu vrijednost
+$route['kategorija/([0-9])'] = 'proizvod_controller/loadbycategory/$1';
 //$route['pocetna'] = 'welcome'; // Poziva 'Welcome' kontroler i implicitno poziva njegovu funkciju index().
 $route['pocetna'] = 'controller/test'; // Poziva 'Controller' kontroler i eksplicitno poziva njegovu funkciju test().
 $route['404_override'] = '';
