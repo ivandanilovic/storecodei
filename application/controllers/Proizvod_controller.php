@@ -16,8 +16,10 @@ class Proizvod_controller extends Controller
     public function loadProduct($id)
     {
         $this->load->model('proizvod_model');
-        $data['podatak'] = $this->proizvod_model->fetch($id); // fetch() vraca objekat Proizvod_model-a, pakuje ga u $data['podatak']
-        $this->loadView('proizvod', $data); // proizvod.php dobija $data i $data['podatak'] postaje $podatak
+        // fetch() vraća paket podataka sa dva polja: 'proizvod' i 'slicni_proizvodi'.
+        // To znaci da je paket podataka asocijativni niz (iste strukture kao $data koji inače koristimo)
+        //...pa njega možemo direktno proslijediti, ne pakujući ga u niz $data.
+        $this->loadView('proizvod', $this->proizvod_model->fetch($id));
     }
 
     public function loadByCategory($id)
