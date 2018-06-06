@@ -49,4 +49,12 @@ class Proizvod_model extends Model
         return $proizvodi;
     }
 
+    public function fetchByBrand($id)
+    {
+        $rezultati = $this->db->get_where('proizvodi', ['brend' => $id]);
+        $proizvodi = array();
+        foreach ($rezultati->result_array() as $rezultat) array_push($proizvodi, new Proizvod_model($rezultat));
+        return $proizvodi;
+    }
+
 }

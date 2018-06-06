@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('session'); // kao $this->load->library('session'), ILI session_start() u svakom .php fajlu
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url'); // Treba nam url_helper radi funkcije base_url()
+$autoload['helper'] = array('url'); // !! Treba nam url_helper radi funkcije base_url()
 
 /*
 | -------------------------------------------------------------------

@@ -29,4 +29,11 @@ class Proizvod_controller extends Controller
         $this->loadView('proizvodi', $data);
     }
 
+    public function loadByBrend($id)
+    {
+        $this->load->model('proizvod_model');
+        $data['podaci'] = $this->proizvod_model->fetchByBrand($id);
+        $this->loadView('proizvodi', $data);
+    }
+
 }

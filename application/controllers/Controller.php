@@ -8,6 +8,7 @@ class Controller extends CI_Controller
     {
         $data['poruka'] = 'test!';
         $this->load->view('welcome_message', $data);
+        if (!isset($this->session->user)) $this->session->user = null;
     }
 
     public function index()
@@ -17,11 +18,26 @@ class Controller extends CI_Controller
 
     protected function loadView($view, $data)
     {
+        $this->loadHeader();
+        $this->load->view($view, $data); // Kao: showContent($data)
+        $this->loadFooter();
+    }
+
+    private function loadHeader() // private znači da se poziva SAMO unutar ove klase, kao pomoćna funkcija
+    {
         $this->load->model('kategorija_model');
         $data['kategorije'] = $this->kategorija_model->fetchAll();
         $this->load->view('templates/header', $data);
-        $this->load->view($view, $data); // Kao: showContent($data)
-        $this->load->view('templates/footer');
+    }
+
+    private function loadFooter()
+    {
+        $this->load->model('brend_model');
+        $data['brendovi'] = $this->brend_model->fetchAll();
+        $this->load->view('templates/footer', $data); // za brendove
     }
 
 }
+
+//session_start() <=> $this->load->library('session')
+//$_SESSION['user_id'] <=> $this->session->user_id

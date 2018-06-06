@@ -18,14 +18,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="title_box">Manufacturers</div>
     <ul class="left_menu">
-        <li class="odd"><a href="#">Sony</a></li>
-        <li class="even"><a href="#">Samsung</a></li>
-        <li class="odd"><a href="#">Daewoo</a></li>
-        <li class="even"><a href="#">LG</a></li>
-        <li class="odd"><a href="#">Fujitsu Siemens</a></li>
-        <li class="even"><a href="#">Motorola</a></li>
-        <li class="odd"><a href="#">Phillips</a></li>
-        <li class="even"><a href="#">Beko</a></li>
+
+        <?php
+        foreach($brendovi as $index => $brend)
+        {
+            echo '
+                                <li class="' . ($index%2==0 ? 'even' : 'odd') . '">
+                                <a href=' . base_url('brend/' . $brend->get('id')) . '>' . $brend->get('naziv') . '</a>
+                                </li>';
+        }
+        ?>
+
     </ul>
     <div class="banner_adds"> <a href="#"><img src="<?php echo base_url('assets/images/bann1.jpg'); ?>" alt="" border="0" /></a> </div>
 </div>
