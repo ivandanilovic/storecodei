@@ -53,6 +53,7 @@ $route['default_controller'] = 'proizvod_controller';
 $route['proizvod/(:num)'] = 'proizvod_controller/loadproduct/$1'; // URL sadrzi numericku vrijednost; loadProduct() prima 1. takvu vrijednost
 $route['kategorija/([0-9])'] = 'proizvod_controller/loadbycategory/$1';
 $route['brend/([0-9])'] = 'proizvod_controller/loadbybrend/$1';
+$route['signin/validation'] = 'User_controller/validateSignIn';
 $route['signin'] = 'user_controller/loadsignin';
 //$route['pocetna'] = 'welcome'; // Poziva 'Welcome' kontroler i implicitno poziva njegovu funkciju index().
 $route['pocetna'] = 'controller/test'; // Poziva 'Controller' kontroler i eksplicitno poziva njegovu funkciju test().

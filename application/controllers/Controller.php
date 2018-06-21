@@ -13,10 +13,10 @@ class Controller extends CI_Controller
 
     public function index()
     {
-        $this->loadView('index', null);
+        $this->loadView('index');
     }
 
-    protected function loadView($view, $data)
+    protected function loadView($view, $data = null)
     {
         $this->loadHeader();
         $this->load->view($view, $data); // Kao: showContent($data)
