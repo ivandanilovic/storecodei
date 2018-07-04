@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once 'User_model.php'; // Radi čitanja username-a.
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,12 +52,14 @@ require_once 'User_model.php'; // Radi čitanja username-a.
                 <li><a href="#" class="nav3">Specials</a></li>
                 <li class="divider"></li>
                 <li>
-                    <a href="<?php echo ($this->session->user ? 'user/' . $this->session->user->get('username') : 'signin'); ?>" class="nav4"><?php
-                        echo ($this->session->user ? $this->session->user->get('username') : 'Sign In'); /*Ako je korisnik ulogovan, $this->session->user je objekat tipa User_model koji sigurno ima atribut 'username'.*/
-                        ?></a>
+                    <a href="<?php echo (isset($user) ? 'user/' . $user->get('username') : 'signin'); ?>" class="nav4">
+                        <?php
+                            echo (isset($user) ? $user->get('username') : 'Sign In'); /*Ako je korisnik ulogovan, $this->session->user je objekat tipa User_model koji sigurno ima atribut 'username'.*/
+                        ?>
+                    </a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="#" class="nav4"><?php echo ($this->session->user ? 'Sign Out' : 'Sign Up'); ?></a></li>
+                <li><a href="#" class="nav4"><?php echo (isset($user) ? 'Sign Out' : 'Sign Up'); ?></a></li>
                 <li class="divider"></li>
                 <li><a href="#" class="nav5">Shipping</a></li>
                 <li class="divider"></li>

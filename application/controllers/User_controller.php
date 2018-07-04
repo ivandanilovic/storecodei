@@ -17,7 +17,8 @@ class User_controller extends Controller
         $user = $this->user_model->findUser($_POST['credentials'], $_POST['password']);
         if (!$user) header('Location: ' . base_url('signin'));
         $this->session->user = $user;
-        header('Location: ' . base_url());
+        $data['user'] = $user;
+        $this->loadView('index', $data);
     }
 
 }
