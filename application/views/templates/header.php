@@ -54,12 +54,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li>
                     <a href="<?php echo (isset($this->session->user) ? ('user/' . unserialize($this->session->user)->get('username')) : 'signin'); ?>" class="nav4">
                         <?php
-                            echo (isset($this->session->user) ? unserialize($this->session->user)->get('username') : 'Sign In'); /*Ako je korisnik ulogovan, $this->session->user je serijalizovan objekat tipa User_model koji sigurno ima atribut 'username'.*/
+                            echo (isset($this->session->user) ? unserialize($this->session->user)->get('username') : 'Sign In'); /*Ako je korisnik ulogovan, $this->session->user je serijalizovan objekat tipa User_model.*/
                         ?>
                     </a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="#" class="nav4"><?php echo (isset($user) ? 'Sign Out' : 'Sign Up'); ?></a></li>
+                <li><a href="#" class="nav4"><?php echo (isset($this->session->user) ? 'Sign Out' : 'Sign Up'); ?></a></li>
                 <li class="divider"></li>
                 <li><a href="#" class="nav5">Shipping</a></li>
                 <li class="divider"></li>
